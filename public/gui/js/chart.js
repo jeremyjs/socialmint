@@ -156,6 +156,13 @@ Markit.InteractiveChartApi.prototype.render = function(data) {
             //type: 'candlestick',
             name: this.symbol,
             data: ohlc,
+			regression: true ,
+                regressionSettings: {
+                    type: 'loess',
+                    color:  '#1111cc',
+                    loessSmooth: 50
+                    
+                },
 			shadow : true,
 			marker : {
                     enabled : true,

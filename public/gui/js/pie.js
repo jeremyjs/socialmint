@@ -399,7 +399,7 @@ $(function () {
             name: 'Sentiment',
             innerSize: '50%',
             data: [
-                ['Bullish', 25],
+                ['Bullish', 40],
                 ['Bearish', 25],
             ]
         }]

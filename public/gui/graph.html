@@ -21,15 +21,16 @@
 <script type="text/javascript" src="js/purl.js"></script>
 <script type="text/javascript" src="js/chart.js"></script>
 <script type="text/javascript" src="js/pie.js"></script>
+<script type="text/javascript" src="js/highcharts-regression.js"></script>
 
 <script type="text/javascript">
 
-	$(function(){
-		var sym = $.url().param('symbol') || 'TSLA';
-		var dur = $.url().param('duration') || 3650;
-		
-		new Markit.InteractiveChartApi(sym, dur);
-	});
+$(function(){
+	var sym = $.url().param('symbol') || 'TSLA';
+	var dur = $.url().param('duration') || 3650;
+	
+	new Markit.InteractiveChartApi(sym, dur);
+});
 
 Highcharts.theme = {
     colors: ['#50B432', '#C53030', '#058DC7', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', 
