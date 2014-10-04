@@ -278,7 +278,7 @@
                             <div class="container web">
                                 <div class="row content">
                                     <div class="span12">
-                                        <div id="container" style="min-width: 310px; height: 395px; max-width: 600px; margin: 0 0 0 5em;"></div> 
+                                        <div id="container" style="height: 33em; max-width: 44em; margin: 0 0 0 4em;"></div> 
                                     </div>
                                 </div>
                             </div>
@@ -303,6 +303,7 @@
                                 <input type="value" name="bear-value" placeholder="Predicted minimum" class="form-control">
                             </div>
                             <br>
+                            <button class="btn btn-default pull-right" onclick="">Submit</button>
                         </div>
                     </div>
                     <div class="panel panel-default">
@@ -313,15 +314,16 @@
                             High
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input type="value" name="bull-value" placeholder="High value notification" class="form-control">
+                                <input type="value" name="high-value" placeholder="High value notification" class="form-control">
                             </div>
                             <br>
                             Low
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input type="value" name="bear-value" placeholder="Low value notification" class="form-control">
+                                <input type="value" name="low-value" placeholder="Low value notification" class="form-control">
                             </div>
                             <br>
+                            <button class="btn btn-default pull-right" onclick="sendText('This is a test. High = '+document.getElementByName('high-value').value+' Low = '+document.getElementByName('low-value').value);"> Set </button>
                         </div>
                     </div>
                 </div>
@@ -346,11 +348,12 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/sb-admin-2.js"></script>
 
-
+    <!-- Semicircle Chart JavaScript -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="http://code.highcharts.com/stock/highstock.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script type="text/javascript" src="gui/js/purl.js"></script>
+
 
     <script type="text/javascript" src="gui/js/pie.js"></script>
     <script type="text/javascript">
@@ -372,6 +375,8 @@
 
     </script>
 
+    <!-- Twilio JavaScript -->
+    <script type="text/javascript" src="/server/twilio.js"></script>
 </body>
 
 </html>
