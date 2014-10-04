@@ -6,7 +6,7 @@
                 {{Name}} - {{Symbol}}
                 <span class="price">({{LastPrice}})</span>
                 <span class="change {{changeClass}}">
-                    {{#if changeIsPositive}}+{{else}}-{{/if}}{{change}}/{{changePercent}}%
+                    {{#if changeIsPositive}}+{{/if}}{{change}}/{{changePercent}}%
                 </span>
             </h1>
         </div>
@@ -24,21 +24,21 @@
         </div>
 
         <div class="col-lg-4 col-md-6">
-            <div class="panel panel-green">
+            <div class="panel panel-green panel-stats">
                 <h2>Volumetrics</h2>
                 <ul>
                     <li>Market Cap: {{marketCap}}</li>
                     <li>Volume: {{volume}}</li>
                 </ul>
             </div>
-            <div class="panel panel-green">
+            <div class="panel panel-green panel-stats">
                 <h2>YTD</h2>
                 <ul>
                     <li>Change YTD: {{ChangeYTD}}</li>
                     <li>Change YTD%: {{changePercentYTD}}</li>
                 </ul>
             </div>
-            <div class="panel panel-green">
+            <div class="panel panel-green panel-stats">
                 <h2>Variance</h2>
                 <ul>
                     <li>High: {{High}}</li>

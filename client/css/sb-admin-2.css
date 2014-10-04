@@ -99,13 +99,13 @@ body {
     padding-left: 5px;
 }
 
-.panel {
+.panel-stats {
     color: #fff;
     padding: 0 15px 15px;
     height: 140px;
 }
 
-.panel > ul {
+.panel-stats > ul {
     padding-left: 20px;
 }
 

@@ -1,13 +1,16 @@
 <template name="stockSentiment">
-    <div class="row">
+    <div class="row" style="padding-top: 25px;">
         <div class="col-lg-8">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-bar-chart-o fa-fw"></i> Community Sentiment
                 </div>
                 <div class="panel-body">
-                    <div class="web">
+                    <div class="container web">
                         <div class="row content">
+                            <div class="span12">
+                                <div id="container" style="height: 33em; max-width: 44em; margin: 0 0 0 4em;"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -51,6 +54,7 @@
                         <input type="value" id="low-value" placeholder="Low value notification" class="form-control">
                     </div>
                     <br>
+                    <a href="#" onclick="test(); setAlerts();">test?</a>
                     <button class="btn btn-default pull-right" onclick="setAlerts();"> Set </button>
                 </div>
             </div>

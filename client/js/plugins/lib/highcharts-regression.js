@@ -1,5 +1,5 @@
 (function (H) {
-	
+
 
     H.wrap(H.Chart.prototype, 'init', function (proceed) {
     	var series = arguments[1].series ;
@@ -10,7 +10,7 @@
     		if ( s.regression && !s.rendered ) {
     			s.regressionSettings =  s.regressionSettings || {} ;
     			var regressionType = s.regressionSettings.type || "linear" ;
-    			var regression; 
+    			var regression;
     			var extraSerie = {
     					data:[],
     					color: s.color ,
@@ -18,18 +18,18 @@
     					lineWidth: 2,
     					marker: {enabled: false} ,
     					isRegressionLine: true,
-    					name: s.regressionSettings.label || "Moving Average (LOESS, α=50) %eq",
+    					name: s.regressionSettings.label || "Moving Average %eq",
     					color: s.regressionSettings.color || '',
     			};
-    			
+
 
             	extraSerie.type = "spline";
-            	
+
                 if (regressionType == "linear") {
                 	regression = _linear(s.data) ;
                 	extraSerie.type = "line";
                 }else if (regressionType == "exponential") {
-                	regression = _exponential(s.data) 
+                	regression = _exponential(s.data)
                 }else if (regressionType == "polynomial"){
                 	regression = _polynomial(s.data, 2) ;
                 }else if (regressionType == "logarithmic"){
@@ -42,14 +42,14 @@
                 	break;
                 }
 
-                
+
             	regression.rSquared =  coefficientOfDetermination(s.data, regression.points).toFixed(2);
             	regression.rValue = Math.sqrt(regression.rSquared,2).toFixed(2) ;
     			extraSerie.data = regression.points ;
     			extraSerie.name = extraSerie.name.replace("%r2",regression.rSquared);
     			extraSerie.name = extraSerie.name.replace("%r",regression.rValue);
     			extraSerie.name = extraSerie.name.replace("%eq",regression.string);
-    			
+
                 extraSerie.regressionOutputs = regression ;
     			extraSeries.push(extraSerie) ;
                 arguments[1].series[i].rendered = true;
@@ -61,11 +61,11 @@
 
     	proceed.apply(this, Array.prototype.slice.call(arguments, 1));
 
-        
-    });
-    
 
-	
+    });
+
+
+
     /**
      * Code extracted from https://github.com/Tom-Alexander/regression-js/
      */
@@ -77,7 +77,7 @@
             sum[0] += data[n][0]; // X
             sum[1] += data[n][1]; // Y
             sum[2] += data[n][0] * data[n][0] * data[n][1]; // XXY
-            sum[3] += data[n][1] * Math.log(data[n][1]); // Y Log Y 
+            sum[3] += data[n][1] * Math.log(data[n][1]); // Y Log Y
             sum[4] += data[n][0] * data[n][1] * Math.log(data[n][1]); //YY Log Y
             sum[5] += data[n][0] * data[n][1]; //XY
           }
@@ -95,26 +95,26 @@
         var string = 'y = ' + Math.round(A*100) / 100 + 'e^(' + Math.round(B*100) / 100 + 'x)';
 
         return {equation: [A, B], points: results, string: string};
-	} 
-	
-	
+	}
+
+
     /**
      * Code extracted from https://github.com/Tom-Alexander/regression-js/
-     * Human readable formulas: 
-     * 
-     *              N * Σ(XY) - Σ(X) 
+     * Human readable formulas:
+     *
+     *              N * Σ(XY) - Σ(X)
      * intercept = ---------------------
      *              N * Σ(X^2) - Σ(X)^2
-     * 
+     *
      * correlation = N * Σ(XY) - Σ(X) * Σ (Y) / √ (  N * Σ(X^2) - Σ(X) ) * ( N * Σ(Y^2) - Σ(Y)^2 ) ) )
-     * 
+     *
      */
 	function _linear(data) {
         var sum = [0, 0, 0, 0, 0], n = 0, results = [], N = data.length;
 
         for (; n < data.length; n++) {
           if (data[n][1]) {
-            sum[0] += data[n][0]; //Σ(X) 
+            sum[0] += data[n][0]; //Σ(X)
             sum[1] += data[n][1]; //Σ(Y)
             sum[2] += data[n][0] * data[n][0]; //Σ(X^2)
             sum[3] += data[n][0] * data[n][1]; //Σ(XY)
@@ -125,7 +125,7 @@
         var gradient = (n * sum[3] - sum[0] * sum[1]) / (n * sum[2] - sum[0] * sum[0]);
         var intercept = (sum[1] / n) - (gradient * sum[0]) / n;
         //var correlation = (n * sum[3] - sum[0] * sum[1]) / Math.sqrt((n * sum[2] - sum[0] * sum[0]) * (n * sum[4] - sum[1] * sum[1]));
-        
+
         for (var i = 0, len = data.length; i < len; i++) {
             var coordinate = [data[i][0], data[i][0] * gradient + intercept];
             results.push(coordinate);
@@ -133,13 +133,13 @@
         var string = 'y = ' + Math.round(gradient*100) / 100 + 'x + ' + Math.round(intercept*100) / 100;
         return {equation: [gradient, intercept], points: results, string: string};
 	}
-	
+
 	/**
 	 *  Code extracted from https://github.com/Tom-Alexander/regression-js/
 	 */
 	function _logarithmic(data) {
         var sum = [0, 0, 0, 0], n = 0, results = [],mean = 0 ;
-        
+
 
         for (len = data.length; n < len; n++) {
           if (data[n][1]) {
@@ -149,7 +149,7 @@
             sum[3] += Math.pow(Math.log(data[n][0]), 2);
           }
         }
-        
+
         var B = (n * sum[1] - sum[2] * sum[0]) / (n * sum[3] - sum[0] * sum[0]);
         var A = (sum[2] - B * sum[0]) / n;
 
@@ -159,10 +159,10 @@
         }
 
         var string = 'y = ' + Math.round(A*100) / 100 + ' + ' + Math.round(B*100) / 100 + ' ln(x)';
-        
+
         return {equation: [A, B], points: results, string: string};
     }
-    
+
     /**
      * Code extracted from https://github.com/Tom-Alexander/regression-js/
      */
@@ -190,7 +190,7 @@
 
         return {equation: [A, B], points: results, string: string};
     }
-    
+
     /**
      * Code extracted from https://github.com/Tom-Alexander/regression-js/
      */
@@ -240,32 +240,32 @@
 
     	return {equation: equation, points: results, string: string};
     }
-    
+
     /**
      * @author: Ignacio Vazquez
-     * Based on 
+     * Based on
      * - http://commons.apache.org/proper/commons-math/download_math.cgi LoesInterpolator.java
      * - https://gist.github.com/avibryant/1151823
      */
     function _loess (data, bandwidth) {
     	var bandwidth = bandwidth || 0.25 ;
-    	
+
     	var xval = data.map(function(pair){return pair[0]});
     	var distinctX =  array_unique(xval) ;
     	if (  2 / distinctX.length  > bandwidth ) {
     		bandwidth = Math.min( 2 / distinctX.length, 1 );
     		console.warn("updated bandwith to "+ bandwidth);
     	}
-    	
+
     	var yval = data.map(function(pair){return pair[1]});
-    	
+
     	function array_unique(values) {
     		var o = {}, i, l = values.length, r = [];
     	    for(i=0; i<l;i+=1) o[values[i]] = values[i];
     	    for(i in o) r.push(o[i]);
     	    return r;
     	}
-    	
+
     	function tricube(x) {
     		var tmp = 1 - x * x * x;
     		return tmp * tmp * tmp;
@@ -279,7 +279,7 @@
     	for(var i in xval)
     	{
     		var x = xval[i];
-	
+
     		if (i > 0) {
     			if (right < xval.length - 1 &&
     					xval[right+1] - xval[i] < xval[i] - xval[left]) {
@@ -333,15 +333,15 @@
     		var alpha = meanY - beta * meanX;
     		res[i] = beta * x + alpha;
     	}
-    	console.debug(res);
-    	return { 
-    		equation: "" , 
-    		points: xval.map(function(x,i){return [x, res[i]]}), 
+    	// console.debug(res);
+    	return {
+    		equation: "" ,
+    		points: xval.map(function(x,i){return [x, res[i]]}),
     		string:""
     	} ;
     }
-    
-    
+
+
     /**
      * Code extracted from https://github.com/Tom-Alexander/regression-js/
      */
@@ -372,21 +372,21 @@
         }
         return (x);
 	 }
-    
+
     /**
-	 * @author Ignacio Vazquez 
-	 * See http://en.wikipedia.org/wiki/Coefficient_of_determination for theaorical details 
+	 * @author Ignacio Vazquez
+	 * See http://en.wikipedia.org/wiki/Coefficient_of_determination for theaorical details
      */
     function coefficientOfDetermination (data, pred ) {
-    	
+
 		var i = SSE = SSYY =  mean = 0;
 
 		// Calc the mean
 		for (i = 0 ; i < data.length ; i++ ){
 		    mean +=  data[i][1] / data.length ;
 		}
-		
-		// Calc the coefficent of determination 
+
+		// Calc the coefficent of determination
 		for (i = 0 ; i < data.length ; i++ ){
 		    SSYY +=  Math.pow( data[i][1] -  pred[i][1] , 2) ;
 		    SSE +=  Math.pow( data[i][1] -  mean , 2) ;
@@ -394,5 +394,5 @@
 		return  1 - ( SSYY / SSE)  ;
     }
 
-   
+
 }(Highcharts));

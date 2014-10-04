@@ -1,9 +1,7 @@
 /**
  * Version 2.0
  */
-
 Markit = {};
-
 /**
  * Define the InteractiveChartApi.
  * First argument is symbol (string) for the quote. Examples: AAPL, MSFT, JNJ, GOOG.
@@ -163,7 +161,8 @@ Markit.InteractiveChartApi.prototype.render = function(data) {
                 regressionSettings: {
                     type: 'loess',
                     color:  '#1111cc',
-                    loessSmooth: 50
+					  loessSmooth: 50
+
 
                 },
 			shadow : true,
@@ -188,49 +187,3 @@ Markit.InteractiveChartApi.prototype.render = function(data) {
         }
     });
 };
-
-
-$(function () {
-    $('#container').highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: 0,
-            plotShadow: false
-        },
-        title: {
-            text: 'Community<br>Sentiment',
-            align: 'center',
-            verticalAlign: 'middle',
-            y: 50
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                dataLabels: {
-                    enabled: true,
-                    distance: -50,
-                    style: {
-                        fontWeight: 'bold',
-                        color: 'white',
-                        textShadow: '0px 1px 2px black'
-                    }
-                },
-                startAngle: -90,
-                endAngle: 90,
-                center: ['50%', '75%']
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Sentiment',
-            innerSize: '50%',
-            data: [
-                ['Bullish', 25],
-                ['Bearish', 25],
-            ]
-        }]
-    });
-});
-
