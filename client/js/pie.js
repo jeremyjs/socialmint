@@ -174,7 +174,7 @@
                         void 0 || f !== void 0) && g.setExtremes(h, f, !0, !1)
                 })
             });
-            c = d.container.innerHTML;
+            c = d.piechart.innerHTML;
             g = null;
             d.destroy();
             o(b);
@@ -209,7 +209,7 @@
         },
         print: function() {
             var b = this,
-                a = b.container,
+                a = b.piechart,
                 d = [],
                 c = a.parentNode,
                 f = j.body,
@@ -243,7 +243,7 @@
                 position: "absolute",
                 zIndex: 1E3,
                 padding: u + "px"
-            }, e.container), w = l("div", null, p({
+            }, e.piechart), w = l("div", null, p({
                 MozBoxShadow: "3px 3px 10px #888",
                 WebkitBoxShadow: "3px 3px 10px #888",
                 boxShadow: "3px 3px 10px #888"
@@ -363,7 +363,7 @@
 
 
 $(function () {
-    $('#container').highcharts({
+    $('#piechart').highcharts({
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: 0,
