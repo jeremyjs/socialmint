@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Graph</title>
+</head>
+
+<body>
+
+<div class="container web">
+	<div class="row content">
+		<div class="span12">
+			<div id="chartDemoContainer" style="height: 500px; min-width: 500px; margin-bottom: 30px;"></div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://markitondemand.github.io/DataApis/InteractiveChartSample/resources/purl.js"></script>
+<script type="text/javascript" src="http://code.highcharts.com/stock/highstock.js"></script>
+<script type="text/javascript" src="js/chart.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		var sym = $.url().param('symbol') || 'TSLA';
+		var dur = $.url().param('duration') || 3650;
+		
+		new Markit.InteractiveChartApi(sym, dur);
+	});
+
+</script>
+</body>
+</html>
