@@ -18,7 +18,7 @@
     					lineWidth: 2,
     					marker: {enabled: false} ,
     					isRegressionLine: true,
-    					name: s.regressionSettings.label || "LOESS Moving Average: %eq",
+    					name: s.regressionSettings.label || "Moving Average (LOESS, α=50) %eq",
     					color: s.regressionSettings.color || '',
     			};
     			

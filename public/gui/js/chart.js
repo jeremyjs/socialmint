@@ -142,7 +142,8 @@ Markit.InteractiveChartApi.prototype.render = function(data) {
             },
             height: 200,
             lineWidth: 2
-        }, {
+        }
+		, {
             title: {
                 text: 'Volume'
             },
