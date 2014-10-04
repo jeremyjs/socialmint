@@ -267,7 +267,7 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-        <div class="container" style="padding-top: 15px;">
+        <div class="container" style="padding-top: 25px;">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="panel panel-default">
@@ -275,24 +275,53 @@
                             <i class="fa fa-bar-chart-o fa-fw"></i> Community Sentiment
                         </div>
                         <div class="panel-body">
-                            <div id="morris-donut-chart"></div>
+                            <div class="container web">
+                                <div class="row content">
+                                    <div class="span12">
+                                        <div id="container" style="min-width: 310px; height: 395px; max-width: 600px; margin: 0 0 0 5em;"></div> 
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> What's your sentiment?
+                            <i class="fa fa-bell fa-fw"></i> Share your sentiment
                         </div>
                         <div class="panel-body">
+                            Bullish
                             <div class="input-group">
-                                Bullish&nbsp;&nbsp;&nbsp;&nbsp;<span class="input-group-addon">$</span>
+                                <span class="input-group-addon">$</span>
                                 <input type="value" name="bull-value" placeholder="Predicted peak" class="form-control">
                             </div>
+                            <br>
+                            Bearish
                             <div class="input-group">
-                                Bearish&nbsp;&nbsp;&nbsp;&nbsp;<span class="input-group-addon">$</span>
+                                <span class="input-group-addon">$</span>
                                 <input type="value" name="bear-value" placeholder="Predicted minimum" class="form-control">
                             </div>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Get price alert texts
+                        </div>
+                        <div class="panel-body">
+                            High
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="value" name="bull-value" placeholder="High value notification" class="form-control">
+                            </div>
+                            <br>
+                            Low
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="value" name="bear-value" placeholder="Low value notification" class="form-control">
+                            </div>
+                            <br>
                         </div>
                     </div>
                 </div>
@@ -316,6 +345,32 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/sb-admin-2.js"></script>
+
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://code.highcharts.com/stock/highstock.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="gui/js/purl.js"></script>
+
+    <script type="text/javascript" src="gui/js/pie.js"></script>
+    <script type="text/javascript">
+
+        $(function(){
+            var sym = $.url().param('symbol') || 'TSLA';
+            var dur = $.url().param('duration') || 3650;
+            
+            new Markit.InteractiveChartApi(sym, dur);
+        });
+
+        Highcharts.theme = {
+            colors: ['#50B432', '#C53030', '#058DC7', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', 
+                     '#FF9655', '#FFF263', '#6AF9C4']
+        };
+
+        // Apply the theme
+        Highcharts.setOptions(Highcharts.theme);
+
+    </script>
 
 </body>
 
