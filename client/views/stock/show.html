@@ -1,6 +1,7 @@
 <template name="showStock">
+
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-8">
             <h1 class="page-header">
                 {{Name}} - {{Symbol}}
                 <span class="price">({{LastPrice}})</span>
@@ -8,6 +9,12 @@
                     {{#if changeIsPositive}}+{{else}}-{{/if}}{{change}}/{{changePercent}}%
                 </span>
             </h1>
+        </div>
+        <div class="col-lg-4">
+            <ul class="nav nav-pills nav-justified">
+              <li class="active"><a href="#">Statistics</a></li>
+              <li><a href="#">Semantics</a></li>
+            </ul>
         </div>
     </div>
 
