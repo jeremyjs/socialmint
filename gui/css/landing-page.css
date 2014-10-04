@@ -1,3 +1,13 @@
+#logo{
+float:left;
+margin-top:10px;
+margin-right:10px;
+}
+#logotxt{
+margin-right:15px;
+}
+
+
 /*!
  * Start Bootstrap - Landing Page Bootstrap Theme (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
