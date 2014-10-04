@@ -161,7 +161,8 @@ Markit.InteractiveChartApi.prototype.render = function(data) {
                 regressionSettings: {
                     type: 'loess',
                     color:  '#1111cc',
-                    loessSmooth: 50
+					  loessSmooth: 50
+                  
                     
                 },
 			shadow : true,
