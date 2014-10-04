@@ -54,11 +54,11 @@ mongo@1.0.6
 mrt:accounts-ui-bootstrap-3@0.3.3
 mrt:bootstrap-3@0.3.8
 mrt:font-awesome-4-less@4.4.0
+mrt:twilio@1.1.0
 npm-bcrypt@0.7.7
 oauth1@1.1.0
 oauth2@1.1.0
 oauth@1.1.0
-mrt:twilio@1.1.0
 observe-sequence@1.0.2
 ordered-dict@1.0.0
 random@1.0.0
