@@ -268,72 +268,37 @@
         </nav>
 
         <div class="container" style="padding-top: 15px;">
-            <!-- /.row -->
             <div class="row">
                 <div class="col-lg-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
-                            <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Actions
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Action</a>
-                                        </li>
-                                        <li><a href="#">Another action</a>
-                                        </li>
-                                        <li><a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="morris-area-chart"></div>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                <!-- /.col-lg-8 -->
-                <div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Notifications Panel
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                                                        <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">View All Alerts</a>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Community Sentiment
                         </div>
                         <div class="panel-body">
                             <div id="morris-donut-chart"></div>
                         </div>
-                        <!-- /.panel-body -->
                     </div>
-                    <!-- /.panel -->
                 </div>
-                <!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> What's your sentiment?
+                        </div>
+                        <div class="panel-body">
+                            <div class="input-group">
+                                Bullish&nbsp;&nbsp;&nbsp;&nbsp;<span class="input-group-addon">$</span>
+                                <input type="value" name="bull-value" placeholder="Predicted peak" class="form-control">
+                            </div>
+                            <div class="input-group">
+                                Bearish&nbsp;&nbsp;&nbsp;&nbsp;<span class="input-group-addon">$</span>
+                                <input type="value" name="bear-value" placeholder="Predicted minimum" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- /.row -->
-        </div>
-        <!-- /#page-wrapper -->
         </div>
     </div>
-    <!-- /#wrapper -->
 
     <!-- jQuery Version 1.11.0 -->
     <script src="js/jquery-1.11.0.js"></script>
