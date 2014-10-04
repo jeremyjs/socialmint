@@ -294,13 +294,13 @@
                             Bullish
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input type="value" name="bull-value" placeholder="Predicted peak" class="form-control">
+                                <input type="value" id="bull-value" placeholder="Predicted peak" class="form-control">
                             </div>
                             <br>
                             Bearish
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input type="value" name="bear-value" placeholder="Predicted minimum" class="form-control">
+                                <input type="value" id="bear-value" placeholder="Predicted minimum" class="form-control">
                             </div>
                             <br>
                             <button class="btn btn-default pull-right" onclick="">Submit</button>
@@ -314,22 +314,25 @@
                             High
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input type="value" name="high-value" placeholder="High value notification" class="form-control">
+                                <input type="value" id="high-value" placeholder="High value notification" class="form-control">
                             </div>
                             <br>
                             Low
                             <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input type="value" name="low-value" placeholder="Low value notification" class="form-control">
+                                <input type="value" id="low-value" placeholder="Low value notification" class="form-control">
                             </div>
                             <br>
-                            <button class="btn btn-default pull-right" onclick="sendText('This is a test. High = '+document.getElementByName('high-value').value+' Low = '+document.getElementByName('low-value').value);"> Set </button>
+                            <a href="#" onclick="test(); setAlerts();">test?</a>
+                            <button class="btn btn-default pull-right" onclick="setAlerts();"> Set </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 
     <!-- jQuery Version 1.11.0 -->
     <script src="js/jquery-1.11.0.js"></script>
@@ -377,6 +380,21 @@
 
     <!-- Twilio JavaScript -->
     <script type="text/javascript" src="/server/twilio.js"></script>
+    <script type="text/javascript">
+        function test(){
+            alert("hi!");
+        }
+        function setAlerts () {
+            var message = "This is a test. High = "
+                +document.getElementById("high-value").value
+                +" Low = "
+                +document.getElementById("low-value").value;
+
+            alert(message);
+
+            sendText(message);
+        }
+    </script>
 </body>
 
 </html>
