@@ -1,0 +1,3 @@
+sendText = function (text, callback) {
+
+};
