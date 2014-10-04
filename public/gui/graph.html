@@ -10,35 +10,47 @@
 	<div class="row content">
 		<div class="span12">
 			<div id="chartDemoContainer" style="height: 500px; min-width: 500px; margin-bottom: 30px;"></div>
-            <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div> 
+            <div id="donut-example"></div>
 		</div>
 	</div>
 </div>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/highstock.js"></script>
-<script type="text/javascript" src="js/highcharts.js"></script>
 <script type="text/javascript" src="js/purl.js"></script>
 <script type="text/javascript" src="js/chart.js"></script>
-<script type="text/javascript" src="js/pie.js"></script>
 <script type="text/javascript" src="js/highcharts-regression.js"></script>
+<script type="text/javascript" src="js/morris-0.4.1.min.js"></script>
+<script type="text/javascript" src="js/raphael-min.js"></script>
+
 
 <script type="text/javascript">
 
 $(function(){
 	var sym = $.url().param('symbol') || 'FB';
 	var dur = $.url().param('duration') || 3650;
-	
 	new Markit.InteractiveChartApi(sym, dur);
 });
+
 
 Highcharts.theme = {
     colors: ['#50B432', '#C53030', '#058DC7', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', 
              '#FF9655', '#FFF263', '#6AF9C4']
 };
-
-// Apply the theme
 Highcharts.setOptions(Highcharts.theme);
+
+
+Morris.Donut({
+  element: 'donut-example',
+  data: [
+    {label: "Bullish", value: 50},
+    {label: "Bearish", value: 50},
+  ],
+  colors: [
+    '#50B432',
+    '#C53030',
+  ]
+});
 
 </script>
 </body>
