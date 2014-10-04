@@ -1,51 +1,7 @@
 <template name="showStock">
+  {{> navbar}}
 
-    <div class="row">
-        <div class="col-lg-8">
-            <h1 class="page-header">
-                {{Name}} - {{Symbol}}
-                <span class="price">({{LastPrice}})</span>
-                <span class="change {{changeClass}}">
-                    {{#if changeIsPositive}}+{{/if}}{{change}}/{{changePercent}}%
-                </span>
-            </h1>
-        </div>
-        <div class="col-lg-4">
-            {{> stockNavPills}}
-        </div>
-    </div>
-
-    <div class="row content">
-        <div class="col-lg-8 col-md-12">
-            <div class="web">
-                <div id="chartDemoContainer" class="chart"></div>
-                <!-- <div id="piechart" class="chart"></div> -->
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6">
-            <div class="panel panel-green panel-stats">
-                <h2>Volumetrics</h2>
-                <ul>
-                    <li>Market Cap: {{marketCap}}</li>
-                    <li>Volume: {{volume}}</li>
-                </ul>
-            </div>
-            <div class="panel panel-green panel-stats">
-                <h2>YTD</h2>
-                <ul>
-                    <li>Change YTD: {{ChangeYTD}}</li>
-                    <li>Change YTD%: {{changePercentYTD}}</li>
-                </ul>
-            </div>
-            <div class="panel panel-green panel-stats">
-                <h2>Variance</h2>
-                <ul>
-                    <li>High: {{High}}</li>
-                    <li>Open: {{Open}}</li>
-                    <li>Low: {{Low}}</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+  <div class="container">
+    {{> yield}}
+  </div>
 </template>

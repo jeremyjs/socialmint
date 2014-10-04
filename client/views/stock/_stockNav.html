@@ -1,0 +1,23 @@
+<template name="stockNav">
+  <div class="row">
+      <div class="col-lg-8">
+          <h1 class="page-header">
+              {{Name}} - {{Symbol}}
+              <span class="price">({{LastPrice}})</span>
+              <span class="change {{changeClass}}">
+                  {{#if changeIsPositive}}+{{/if}}{{change}}/{{changePercent}}%
+              </span>
+          </h1>
+      </div>
+      <div class="col-lg-4">
+        <ul class="nav nav-pills nav-justified">
+        <li class="{{statsClass}}">
+            <a href="/stock/show/{{Symbol}}">Statistics</a>
+          </li>
+        <li class="{{sentimentClass}}">
+            <a href="/stock/sentiment/{{Symbol}}">Sentiment</a>
+          </li>
+        </ul>
+      </div>
+  </div>
+</template>

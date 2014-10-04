@@ -1,4 +1,4 @@
-Template.showStock.helpers({
+stockHelpers = {
   change: function () {
     return this.Change.toFixed(2);
   },
@@ -20,4 +20,21 @@ Template.showStock.helpers({
   changePercentYTD: function () {
     return this.ChangePercentYTD.toFixed(2);
   }
-});
+};
+
+Template.stockStats.helpers(stockHelpers);
+Template.stockSentiment.helpers(stockHelpers);
+Template.stockNav.helpers($.extend(stockHelpers, {
+  statsClass: function() {
+    if(Session.get('currentView') === 'stats')
+      return 'active';
+    else
+      return '';
+  },
+  sentimentClass: function() {
+    if(Session.get('currentView') === 'sentiment')
+      return 'active';
+    else
+      return '';
+  }
+}));
