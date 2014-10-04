@@ -7,6 +7,7 @@ meteor-platform
 autopublish
 insecure
 mrt:bootstrap-3
+<<<<<<< Updated upstream
 less
 mrt:font-awesome-4-less
 iron:router@1.0.0-pre3
@@ -16,3 +17,7 @@ accounts-facebook
 accounts-twitter
 mrt:accounts-ui-bootstrap-3
 accounts-github
+=======
+mrt:twilio
+
+>>>>>>> Stashed changes
