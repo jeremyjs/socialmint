@@ -9,10 +9,10 @@ Meteor.methods({
 			body: text
 		}, function (err, res) {
 			if (!err) {
-				if (response.trim().toLowerCase().equals(buy)) {
+				if (res.trim().toLowerCase().equals(buy)) {
 					// buy given stock
 				}
-				if (response.trim().toLowerCase().equals(sell)) {
+				if (res.trim().toLowerCase().equals(sell)) {
 					// buy given stock
 				}
 			}
