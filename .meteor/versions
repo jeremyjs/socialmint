@@ -47,6 +47,8 @@ localstorage@1.0.0
 logging@1.0.3
 meteor-platform@1.1.1
 meteor@1.1.1
+meteorhacks:async@1.0.0
+meteorhacks:npm@1.2.0
 minifiers@1.1.0
 minimongo@1.0.3
 mobile-status-bar@1.0.0
@@ -56,6 +58,7 @@ mrt:bootstrap-3@0.3.8
 mrt:font-awesome-4-less@4.4.0
 mrt:twilio@1.1.0
 npm-bcrypt@0.7.7
+npm-container@1.0.0
 oauth1@1.1.0
 oauth2@1.1.0
 oauth@1.1.0
