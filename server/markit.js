@@ -20,8 +20,8 @@ Meteor.methods({
       stock.sentimentSum = {};
       stock.avgBull = (stock.LastPrice + stock.LastPrice * ((Math.random() * .2) + .05)).toFixed(2);
       stock.avgBear = (stock.LastPrice - stock.LastPrice * ((Math.random() * .2) + .05)).toFixed(2);
-      stock.num_bull = 70 + Math.floor((Math.random() * 20) + 1);
-      stock.num_bear = 100 - stock.num_bull;
+      stock.numBull = 70 + Math.floor((Math.random() * 20) + 1);
+      stock.numBear = 100 - stock.numBull;
       Stocks.insert(stock);
       return stock;
     });

@@ -20,20 +20,17 @@ stockHelpers = {
   },
   changePercentYTD: function () {
     return this.ChangePercentYTD.toFixed(2);
-  }
-};
-
-Template.stockStats.helpers(stockHelpers);
-Template.stockSentiment.helpers($.extend(stockHelpers, {
+  },
   bullish: function() {
     // if(!this.sentimentSum || !this.sentimentSum.num_bull) { return 1; }
     // return parseInt(this.sentimentSum.num_bull);
-    return this.num_bull;
+    console.log(this);
+    return this.numBull;
   },
   bearish: function() {
     // if(!this.sentimentSum || !this.sentimentSum.num_bear) { return 1; }
     // return parseInt(this.sentimentSum.num_bear);
-    return this.num_bear;
+    return this.numBear;
   },
   avgBull: function() {
     // if(!this.sentimentSum.avgBull) { return this.LastPrice.toFixed(2); }
@@ -45,7 +42,10 @@ Template.stockSentiment.helpers($.extend(stockHelpers, {
     // return parseFloat(this.sentimentSum.avgBear).toFixed(2);
     return this.avgBear;
   }
-}));
+};
+
+Template.stockStats.helpers(stockHelpers);
+Template.stockSentiment.helpers(stockHelpers);
 Template.stockNav.helpers($.extend(stockHelpers, {
   statsClass: function() {
     if(Session.get('currentView') === 'stats')
@@ -63,30 +63,30 @@ Template.stockNav.helpers($.extend(stockHelpers, {
 
 Template.stockSentiment.events({
   'click #submit-button': function(e) {
-    e.preventDefault();
-    sentiments = this.Sentiments || {};
-    which = $('#bulls-or-bears option:selected').val();
+    // e.preventDefault();
+    // sentiments = this.Sentiments || {};
+    // which = $('#bulls-or-bears option:selected').val();
 
-    if(which === "Bullish") {
-      value = $('#sentiment-value').val();
-      sentiments[Meteor.userId()] = {
-        bull: value,
-        bear: null
-      };
-    }
-    else if(which === "Bearish") {
-      value = $('#sentiment-value').val();
-      sentiments[Meteor.userId()] = {
-        bull: null,
-        bear: value
-      };
-    }
+    // if(which === "Bullish") {
+    //   value = $('#sentiment-value').val();
+    //   sentiments[Meteor.userId()] = {
+    //     bull: value,
+    //     bear: null
+    //   };
+    // }
+    // else if(which === "Bearish") {
+    //   value = $('#sentiment-value').val();
+    //   sentiments[Meteor.userId()] = {
+    //     bull: null,
+    //     bear: value
+    //   };
+    // }
 
-    this.Sentiments = sentiments;
-    this.sentimentSum = calculateSentiment(sentiments);
+    // this.Sentiments = sentiments;
+    // this.sentimentSum = calculateSentiment(sentiments);
 
-    Stocks.update(this._id, { $set: { Sentiments: this.Sentiments, sentimentSum: this.sentimentSum } });
-    location.reload();
+    // Stocks.update(this._id, { $set: { Sentiments: this.Sentiments, sentimentSum: this.sentimentSum } });
+    // location.reload();
   },
   'click #set-button': function(e) {
     Meteor.call('setAlert', {
@@ -101,10 +101,11 @@ Template.stockSentiment.events({
 });
 
 Template.stockSentiment.rendered = function () {
+  console.log(this);
   var num_bull = Template.stockSentiment.bullish();
   var num_bear = Template.stockSentiment.bearish();
-  // console.log(num_bull);
-  // console.log(num_bear);
+  console.log(num_bull);
+  console.log(num_bear);
   // num_bull = 70 + Math.floor((Math.random() * 20) + 1);
   // num_bear = 100 - num_bull;
   Morris.Donut({
