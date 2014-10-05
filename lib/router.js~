@@ -3,7 +3,7 @@ Router.configure({
 });
 
 Router.route('/stock/show/:symbol', {
-  name: 'stockStats',
+  name: 'showStats',
   action: function () {
     Session.set('currentView', 'stats');
     this.render('stockStats', {
