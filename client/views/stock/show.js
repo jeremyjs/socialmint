@@ -26,20 +26,24 @@ stockHelpers = {
 Template.stockStats.helpers(stockHelpers);
 Template.stockSentiment.helpers($.extend(stockHelpers, {
   bullish: function() {
-    if(!this.sentimentSum || !this.sentimentSum.num_bull) { return 1; }
-    return parseInt(this.sentimentSum.num_bull);
+    // if(!this.sentimentSum || !this.sentimentSum.num_bull) { return 1; }
+    // return parseInt(this.sentimentSum.num_bull);
+    return this.num_bull;
   },
   bearish: function() {
-    if(!this.sentimentSum || !this.sentimentSum.num_bear) { return 1; }
-    return parseInt(this.sentimentSum.num_bear);
+    // if(!this.sentimentSum || !this.sentimentSum.num_bear) { return 1; }
+    // return parseInt(this.sentimentSum.num_bear);
+    return this.num_bear;
   },
   avgBull: function() {
-    if(!this.sentimentSum.avgBull) { return this.LastPrice.toFixed(2); }
-    return parseFloat(this.sentimentSum.avgBull).toFixed(2);
+    // if(!this.sentimentSum.avgBull) { return this.LastPrice.toFixed(2); }
+    // return parseFloat(this.sentimentSum.avgBull).toFixed(2);
+    return this.avgBull;
   },
   avgBear: function() {
-    if(!this.sentimentSum.avgBear) { return this.LastPrice.toFixed(2); }
-    return parseFloat(this.sentimentSum.avgBear).toFixed(2);
+    // if(!this.sentimentSum.avgBear) { return this.LastPrice.toFixed(2); }
+    // return parseFloat(this.sentimentSum.avgBear).toFixed(2);
+    return this.avgBear;
   }
 }));
 Template.stockNav.helpers($.extend(stockHelpers, {
@@ -99,13 +103,15 @@ Template.stockSentiment.events({
 Template.stockSentiment.rendered = function () {
   var num_bull = Template.stockSentiment.bullish();
   var num_bear = Template.stockSentiment.bearish();
-  console.log(num_bull);
-  console.log(num_bear);
+  // console.log(num_bull);
+  // console.log(num_bear);
+  // num_bull = 70 + Math.floor((Math.random() * 20) + 1);
+  // num_bear = 100 - num_bull;
   Morris.Donut({
     element: 'donut-example',
     data: [
-      {label: 'Bullish', value: num_bull },
-      {label: 'Bearish', value: num_bear }
+      {label: '% Bullish', value: num_bull },
+      {label: '% Bearish', value: num_bear }
     ],
     colors: [
       '#50B432',
