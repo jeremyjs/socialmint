@@ -109,4 +109,12 @@ Template.stockSentiment.rendered = function () {
       '#C53030'
     ]
   });
+  thiz = this;
+  changePrice = function() {
+    change = thiz.data.LastPrice * ((Math.random * .04) - .02);
+    thiz.data.LastPrice = thiz.data.LastPrice + change;
+    thiz.data.Change = change;
+    thiz.data.ChangePercent = change / thiz.data.LastPrice;
+  }
+  setInterval(changePrice, 1000);
 };
