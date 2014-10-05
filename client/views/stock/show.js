@@ -40,7 +40,7 @@ Template.stockNav.helpers($.extend(stockHelpers, {
 }));
 
 Template.stockSentiment.events({
-  'click #submit-button': function(a, b, c) {
+  'click #submit-button': function(e) {
     sentiments = this.Sentiments;
 
     bull = $('#bull-value').val();
@@ -56,5 +56,16 @@ Template.stockSentiment.events({
     Stocks.update({_id: this._id}, {
       Sentiments: sentiments
     });
+  },
+  'click #set-button': function(e) {
+    Meteor.call('setAlert', {
+      userId: Meteor.userId(),
+      symbol: this.Symbol,
+      high: $('#high-value').val(),
+      low: $('#low-value').val()
+    }, function(err, res) {
+      console.log(err);
+      console.log(res);
+    });
   }
-})
+});
