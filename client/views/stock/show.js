@@ -39,19 +39,6 @@ Template.stockNav.helpers($.extend(stockHelpers, {
   }
 }));
 
-<<<<<<< HEAD
-Morris.Donut({
-  element: 'donut-example',
-  data: [
-    {label: "Bullish", value: 50},
-    {label: "Bearish", value: 50},
-  ],
-  colors: [
-    '#50B432',
-    '#C53030',
-  ]
-});
-=======
 Template.stockSentiment.events({
   'click #submit-button': function(a, b, c) {
     sentiments = this.Sentiments;
@@ -71,4 +58,4 @@ Template.stockSentiment.events({
     });
   }
 })
->>>>>>> 4982b955809db3b624cdbb59e5b96fa9649f7d86
+

@@ -39,6 +39,7 @@ Template.stockNav.helpers($.extend(stockHelpers, {
   }
 }));
 
+<<<<<<< HEAD
 Morris.Donut({
   element: 'donut-example',
   data: [
@@ -50,3 +51,24 @@ Morris.Donut({
     '#C53030',
   ]
 });
+=======
+Template.stockSentiment.events({
+  'click #submit-button': function(a, b, c) {
+    sentiments = this.Sentiments;
+
+    bull = $('#bull-value').val();
+    bear = $('#bear-value').val();
+    console.log(bull);
+    console.log(bear);
+
+    sentiments[Meteor.userId] = {
+      bull: bull,
+      bear: bear
+    };
+
+    Stocks.update({_id: this._id}, {
+      Sentiments: sentiments
+    });
+  }
+})
+>>>>>>> 4982b955809db3b624cdbb59e5b96fa9649f7d86
