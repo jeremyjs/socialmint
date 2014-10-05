@@ -14,9 +14,19 @@ Meteor.methods({
       content = res.content;
       content = content.substring(9, content.length - 1);
       content = JSON.parse(content);
-      Stocks.insert(content, function(stock) {
-        return stock;
+      stock = content;
+      console.log(stock);
+      sentiment = calculateSentiment(stock);
+      console.log(sentiment);
+      stock.sentimentSum = sentiment;
+      Stocks.upsert({Symbol: stock.Symbol}, stock, function(res) {
+        return res;
       });
+    });
+  },
+  updateStockData: function(opt) {
+    return Stocks.upsert({Symbol: opt.symbol}, opt.stock, function(res) {
+      return res;
     });
   }
 });

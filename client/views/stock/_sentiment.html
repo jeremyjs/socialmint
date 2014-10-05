@@ -27,19 +27,21 @@
                     <i class="fa fa-bell fa-fw"></i> Share your sentiment
                 </div>
                 <div class="panel-body">
-                    Bullish
-                    <div class="input-group">
-                        <span class="input-group-addon">$</span>
-                        <input type="value" id="bull-value" placeholder="Predicted peak" class="form-control">
-                    </div>
-                    <br>
-                    Bearish
-                    <div class="input-group">
-                        <span class="input-group-addon">$</span>
-                        <input type="value" id="bear-value" placeholder="Predicted minimum" class="form-control">
-                    </div>
-                    <br>
-                    <button id="submit-button" class="btn btn-default pull-right"> Submit </button>
+                    <form class="form-inline" role="form">
+                        <div class="form-group">
+                            <select id="bulls-or-bears" class="form-control">
+                                <option>Bullish</option>
+                                <option>Bearish</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input type="value" id="sentiment-value" placeholder="Predicted minimum" class="form-control">
+                            </div>
+                        </div>
+                        <button id="submit-button" class="btn btn-default pull-right"> Submit </button>
+                    </form>
                 </div>
             </div>
             <div class="panel panel-default">
@@ -66,17 +68,16 @@
         </div>
     </div>
     <script>
-   
-Morris.Donut({
-  element: 'donut-example',
-  data: [
-    {label: "Bullish", value: 50},
-    {label: "Bearish", value: 50},
-  ],
-  colors: [
-    '#50B432',
-    '#C53030',
-  ]
-});
+        Morris.Donut({
+          element: 'donut-example',
+          data: [
+            {label: "Bullish", value: 50},
+            {label: "Bearish", value: 50},
+          ],
+          colors: [
+            '#50B432',
+            '#C53030',
+          ]
+        });
     </script>
 </template>
