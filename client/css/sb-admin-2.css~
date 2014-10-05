@@ -71,6 +71,7 @@ body {
 .nav > li > a:hover,
 .nav > li > a:focus {
     background-color: #eee;
+	color:#346667;
 }
 
 .nav > .open > a,
@@ -137,8 +138,8 @@ body {
 }
 
 .panel-red a:hover {
-    color: #b52b27;
-	
+    /*color: #b52b27;*/
+	color:#346667;
 }
 
 .panel-yellow {
@@ -151,7 +152,8 @@ body {
 }
 
 .panel-yellow a:hover {
-    color: #df8a13;
+    /*color: #df8a13;*/
+	color:#346667;
 }
 
 .price {

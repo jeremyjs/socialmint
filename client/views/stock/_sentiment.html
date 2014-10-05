@@ -10,7 +10,11 @@
                     <div class="container web">
                         <div class="row content">
                             <div class="span12">
-                                <div id="container" style="height: 33em; max-width: 44em; margin: 0 0 0 4em;"></div>
+                                <div id="container" style="height: 33em; max-width: 44em; margin: 0 0 0 4em;">
+                                 <div id="donut-example"></div>
+                                 <p>Average target price (bull): $</p>
+                                 <p>Average target price (bear): $</p>
+                                 </div>
                             </div>
                         </div>
                     </div>
@@ -61,4 +65,18 @@
             </div>
         </div>
     </div>
+    <script>
+   
+Morris.Donut({
+  element: 'donut-example',
+  data: [
+    {label: "Bullish", value: 50},
+    {label: "Bearish", value: 50},
+  ],
+  colors: [
+    '#50B432',
+    '#C53030',
+  ]
+});
+    </script>
 </template>
