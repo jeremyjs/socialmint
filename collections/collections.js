@@ -43,6 +43,6 @@ var notifier = function (id, stock) {
 
 Stocks.find().observeChanges({
 
-	added: notifier,
 	changed: notifier
 });
+
