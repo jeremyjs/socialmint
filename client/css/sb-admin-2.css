@@ -172,3 +172,11 @@ body {
     height: 480px;
     margin-bottom: 30px;
 }
+
+.form-sentiment{
+width: 50% !important; 
+}
+
+.form-selector{
+    float:left;
+}
