@@ -41,21 +41,25 @@ Template.stockNav.helpers($.extend(stockHelpers, {
 
 Template.stockSentiment.events({
   'click #submit-button': function(e) {
-    sentiments = this.Sentiments;
+    sentiments = this.Sentiments || {};
+    which = $('#bulls-or-bears option:selected').val();
 
-    bull = $('#bull-value').val();
-    bear = $('#bear-value').val();
-    console.log(bull);
-    console.log(bear);
+    if(which === "Bullish") {
+      value = $('#sentiment-value').val();
+      sentiments[Meteor.userId()] = {
+        bull: value,
+        bear: null
+      };
+    }
+    else if(which === "Bearish") {
+      value = $('#sentiment-value').val();
+      sentiments[Meteor.userId()] = {
+        bull: null,
+        bear: value
+      };
+    }
 
-    sentiments[Meteor.userId] = {
-      bull: bull,
-      bear: bear
-    };
-
-    Stocks.update({_id: this._id}, {
-      Sentiments: sentiments
-    });
+    Stocks.update(this._id, { $set: { Sentiments: sentiments } });
   },
   'click #set-button': function(e) {
     Meteor.call('setAlert', {
