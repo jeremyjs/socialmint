@@ -38,3 +38,23 @@ Template.stockNav.helpers($.extend(stockHelpers, {
       return '';
   }
 }));
+
+Template.stockSentiment.events({
+  'click #submit-button': function(a, b, c) {
+    sentiments = this.Sentiments;
+
+    bull = $('#bull-value').val();
+    bear = $('#bear-value').val();
+    console.log(bull);
+    console.log(bear);
+
+    sentiments[Meteor.userId] = {
+      bull: bull,
+      bear: bear
+    };
+
+    Stocks.update({_id: this._id}, {
+      Sentiments: sentiments
+    });
+  }
+})
