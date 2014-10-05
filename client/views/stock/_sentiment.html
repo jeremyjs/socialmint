@@ -29,15 +29,13 @@
                 <div class="panel-body">
                     <form class="form-inline" role="form">
                         <div class="form-group">
-                            <select id="bulls-or-bears" class="form-control">
-                                <option>Bullish</option>
-                                <option>Bearish</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-group">
+                            <div class="input-group" style="float:left;">
                                 <span class="input-group-addon">$</span>
-                                <input type="value" id="sentiment-value" placeholder="Predicted minimum" class="form-control">
+                                <input type="value" id="sentiment-value" placeholder="Predicted price" class="form-control">
+								<select id="bulls-or-bears" class="form-control">
+                                	<option>Bullish</option>
+                                	<option>Bearish</option>
+                            	</select>
                             </div>
                         </div>
                         <button id="submit-button" class="btn btn-default pull-right"> Submit </button>
