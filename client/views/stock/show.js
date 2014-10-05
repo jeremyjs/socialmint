@@ -92,6 +92,7 @@ Template.stockSentiment.events({
     Meteor.call('setAlert', {
       userId: Meteor.userId(),
       symbol: this.Symbol,
+      name: this.Name,
       high: $('#high-value').val(),
       low: $('#low-value').val()
     }, function(err, res) {
