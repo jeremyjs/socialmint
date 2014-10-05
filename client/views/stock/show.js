@@ -21,17 +21,6 @@ stockHelpers = {
   changePercentYTD: function () {
     return this.ChangePercentYTD.toFixed(2);
   },
-  bullish: function() {
-    // if(!this.sentimentSum || !this.sentimentSum.num_bull) { return 1; }
-    // return parseInt(this.sentimentSum.num_bull);
-    console.log(this);
-    return this.numBull;
-  },
-  bearish: function() {
-    // if(!this.sentimentSum || !this.sentimentSum.num_bear) { return 1; }
-    // return parseInt(this.sentimentSum.num_bear);
-    return this.numBear;
-  },
   avgBull: function() {
     // if(!this.sentimentSum.avgBull) { return this.LastPrice.toFixed(2); }
     // return parseFloat(this.sentimentSum.avgBull).toFixed(2);
@@ -102,8 +91,8 @@ Template.stockSentiment.events({
 
 Template.stockSentiment.rendered = function () {
   console.log(this);
-  var num_bull = Template.stockSentiment.bullish();
-  var num_bear = Template.stockSentiment.bearish();
+  var num_bull = this.data.numBull;
+  var num_bear = this.data.numBear;
   console.log(num_bull);
   console.log(num_bear);
   // num_bull = 70 + Math.floor((Math.random() * 20) + 1);
