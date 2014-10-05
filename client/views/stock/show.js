@@ -1,3 +1,4 @@
+
 stockHelpers = {
   change: function () {
     return this.Change.toFixed(2);
@@ -23,7 +24,24 @@ stockHelpers = {
 };
 
 Template.stockStats.helpers(stockHelpers);
-Template.stockSentiment.helpers(stockHelpers);
+Template.stockSentiment.helpers($.extend(stockHelpers, {
+  bullish: function() {
+    if(!this.sentimentSum || !this.sentimentSum.num_bull) { return 1; }
+    return parseInt(this.sentimentSum.num_bull);
+  },
+  bearish: function() {
+    if(!this.sentimentSum || !this.sentimentSum.num_bear) { return 1; }
+    return parseInt(this.sentimentSum.num_bear);
+  },
+  avgBull: function() {
+    if(!this.sentimentSum.avgBull) { return this.LastPrice.toFixed(2); }
+    return parseFloat(this.sentimentSum.avgBull).toFixed(2);
+  },
+  avgBear: function() {
+    if(!this.sentimentSum.avgBear) { return this.LastPrice.toFixed(2); }
+    return parseFloat(this.sentimentSum.avgBear).toFixed(2);
+  }
+}));
 Template.stockNav.helpers($.extend(stockHelpers, {
   statsClass: function() {
     if(Session.get('currentView') === 'stats')
@@ -41,6 +59,7 @@ Template.stockNav.helpers($.extend(stockHelpers, {
 
 Template.stockSentiment.events({
   'click #submit-button': function(e) {
+    e.preventDefault();
     sentiments = this.Sentiments || {};
     which = $('#bulls-or-bears option:selected').val();
 
@@ -59,7 +78,11 @@ Template.stockSentiment.events({
       };
     }
 
-    Stocks.update(this._id, { $set: { Sentiments: sentiments } });
+    this.Sentiments = sentiments;
+    this.sentimentSum = calculateSentiment(sentiments);
+
+    Stocks.update(this._id, { $set: { Sentiments: this.Sentiments, sentimentSum: this.sentimentSum } });
+    location.reload();
   },
   'click #set-button': function(e) {
     Meteor.call('setAlert', {
@@ -68,8 +91,25 @@ Template.stockSentiment.events({
       high: $('#high-value').val(),
       low: $('#low-value').val()
     }, function(err, res) {
-      console.log(err);
-      console.log(res);
+      if(err) { console.log(err); }
     });
   }
 });
+
+Template.stockSentiment.rendered = function () {
+  var num_bull = Template.stockSentiment.bullish();
+  var num_bear = Template.stockSentiment.bearish();
+  console.log(num_bull);
+  console.log(num_bear);
+  Morris.Donut({
+    element: 'donut-example',
+    data: [
+      {label: 'Bullish', value: num_bull },
+      {label: 'Bearish', value: num_bear }
+    ],
+    colors: [
+      '#50B432',
+      '#C53030'
+    ]
+  });
+};

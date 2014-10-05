@@ -13,12 +13,11 @@ iron:router@1.0.0-pre3
 accounts-base
 accounts-password
 accounts-facebook
-accounts-twitter
 mrt:accounts-ui-bootstrap-3
-accounts-github
 mrt:twilio
 http
 meteorhacks:npm
 
 
 npm-container
+chhib:morris

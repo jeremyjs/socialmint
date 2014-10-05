@@ -1,4 +1,5 @@
 Stocks = new Mongo.Collection('stocks');
+<<<<<<< HEAD
 
 var notifier = function (id, stock) {
 	
@@ -34,3 +35,16 @@ Stocks.find().observeChanges({
 	added: notifier,
 	changed: notifier
 });
+=======
+Perceptions = new Mongo.Collection('Perceptions');
+/* perception = {
+ *   symbol: string,
+ *   sentiments: {
+ *     userId: {
+ *       bull: float,
+ *       bear: null,
+ *     }, ...
+ *   }
+ * }
+ */
+>>>>>>> FETCH_HEAD
