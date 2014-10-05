@@ -1,12 +1,12 @@
 Meteor.methods({
   setAlert: function(opt) {
-    alerts = Meteor.users.findOne({_id: opt.userId }).alerts || {};
+    alerts = Stocks.findOne({ Symbol: opt.symbol }).Alerts || {};
 
-    alerts[opt.symbol] = {
+    alerts[opt.userId] = {
       high: opt.high,
       low: opt.low
     };
 
-    Meteor.users.update(opt.userId, { $set: { alerts: alerts } });
+    Stocks.update({ Symbol: opt.symbol }, { $set: { Alerts: alerts } });
   }
 })

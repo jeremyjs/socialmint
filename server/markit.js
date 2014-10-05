@@ -4,24 +4,22 @@ callback = function (res) {
   return res;
 };
 Meteor.methods({
-  getStockData: function(symbol) {
+  createNewStockFromStockData: function(symbol) {
     return HTTP.get(baseURL, {
       params: {
         symbol: symbol,
         callback: 'callback'
       }
     }, function(err, res) {
-      content = res.content;
-      content = content.substring(9, content.length - 1);
-      content = JSON.parse(content);
-      stock = content;
+      stock = res.content;
+      stock = stock.substring(9, stock.length - 1);
+      stock = JSON.parse(stock);
       console.log(stock);
-      sentiment = calculateSentiment(stock);
-      console.log(sentiment);
-      stock.sentimentSum = sentiment;
-      Stocks.upsert({Symbol: stock.Symbol}, stock, function(res) {
-        return res;
-      });
+      stock.Sentiments = {};
+      stock.Alerts = {};
+      stock.sentimentSum = {};
+      Stocks.insert(stock);
+      return stock;
     });
   },
   updateStockData: function(opt) {
