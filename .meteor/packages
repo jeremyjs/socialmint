@@ -18,3 +18,7 @@ mrt:accounts-ui-bootstrap-3
 accounts-github
 mrt:twilio
 http
+meteorhacks:npm
+
+
+npm-container
