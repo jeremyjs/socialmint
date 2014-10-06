@@ -101,8 +101,8 @@ Template.stockSentiment.rendered = function () {
   Morris.Donut({
     element: 'donut-example',
     data: [
-      {label: '% Bullish', value: num_bull },
-      {label: '% Bearish', value: num_bear }
+      {label: '% Bullish', value: 78 },
+      {label: '% Bearish', value: 22 }
     ],
     colors: [
       '#50B432',
