@@ -96,13 +96,13 @@ Template.stockSentiment.rendered = function () {
   var num_bear = this.data.numBear;
   console.log(num_bull);
   console.log(num_bear);
-  // num_bull = 70 + Math.floor((Math.random() * 20) + 1);
-  // num_bear = 100 - num_bull;
+  bull = 70 + Math.floor((Math.random() * 20) + 1);
+  bear = 100 - bull;
   Morris.Donut({
     element: 'donut-example',
     data: [
-      {label: '% Bullish', value: num_bull },
-      {label: '% Bearish', value: num_bear }
+      {label: '% Bullish', value: bull },
+      {label: '% Bearish', value: bear }
     ],
     colors: [
       '#50B432',
