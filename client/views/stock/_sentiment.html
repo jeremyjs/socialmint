@@ -1,67 +1,67 @@
 <template name="stockSentiment">
-    {{> stockNav}}
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i> Community Sentiment
-                </div>
-                <div class="panel-body">
-                    <div class="container web">
-                        <div class="row content">
-                            <div class="span12">
-                                <div id="container" style="height: 33em; max-width: 44em; margin: 0 0 0 4em;">
-                                 <div id="donut-example"></div>
-                                 <p>Average target price (bull): $288.15</p>
-                                 <p>Average target price (bear): $211.15</p>
-                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  {{> stockNav}}
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa-bar-chart-o fa-fw"></i> Community Sentiment
         </div>
-        <div class="col-lg-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bell fa-fw"></i> Share your sentiment
+        <div class="panel-body">
+          <div class="container web">
+            <div class="row content">
+              <div class="span12">
+                <div id="container" style="height: 33em; max-width: 44em; margin: 0 0 0 4em;">
+                  <div id="donut-example"></div>
+                  <p>Average target price (bull): $288.15</p>
+                  <p>Average target price (bear): $211.15</p>
                 </div>
-                <div class="panel-body">
-                    <form class="form-inline" role="form">
-                        <div class="form-group">
-                            <div class="input-group" style="float:left;">
-                                <span class="input-group-addon">$</span>
-                                <input type="value" id="sentiment-value" placeholder="Predicted price" class="form-control">
-								<select id="bulls-or-bears" class="form-control">
-                                	<option>Bullish</option>
-                                	<option>Bearish</option>
-                            	</select>
-                            </div>
-                        </div>
-                        <button id="submit-button" class="btn btn-default pull-right"> Submit </button>
-                    </form>
-                </div>
+              </div>
             </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bell fa-fw"></i> Get price alert texts
-                </div>
-                <div class="panel-body">
-                    High
-                    <div class="input-group">
-                        <span class="input-group-addon">$</span>
-                        <input type="value" id="high-value" placeholder="High value notification" class="form-control">
-                    </div>
-                    <br>
-                    Low
-                    <div class="input-group">
-                        <span class="input-group-addon">$</span>
-                        <input type="value" id="low-value" placeholder="Low value notification" class="form-control">
-                    </div>
-                    <br>
-                    <button id="set-button" class="btn btn-default pull-right"> Set </button>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
+    <div class="col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa-bell fa-fw"></i> Share your sentiment
+        </div>
+        <div class="panel-body">
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <div class="input-group" style="float:left;">
+                <span class="input-group-addon">$</span>
+                <input type="value" id="sentiment-value" placeholder="Predicted price" class="form-control">
+                <select id="bulls-or-bears" class="form-control">
+                  <option>Bullish</option>
+                  <option>Bearish</option>
+                </select>
+              </div>
+            </div>
+            <button id="submit-button" class="btn btn-default pull-right"> Submit </button>
+          </form>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <i class="fa fa-bell fa-fw"></i> Get price alert texts
+        </div>
+        <div class="panel-body">
+          High
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input type="value" id="high-value" placeholder="High value notification" class="form-control">
+          </div>
+          <br>
+          Low
+          <div class="input-group">
+            <span class="input-group-addon">$</span>
+            <input type="value" id="low-value" placeholder="Low value notification" class="form-control">
+          </div>
+          <br>
+          <button id="set-button" class="btn btn-default pull-right"> Set </button>
+        </div> <!-- panel-body -->
+      </div> <!-- panel -->
+    </div> <!-- col-lg-4 -->
+  </div> <!-- row -->
 </template>
