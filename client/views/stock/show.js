@@ -23,19 +23,17 @@ stockHelpers = {
     return this.ChangePercentYTD.toFixed(2);
   },
   avgBull: function() {
-    // if(!this.sentimentSum.avgBull) { return this.LastPrice.toFixed(2); }
-    // return parseFloat(this.sentimentSum.avgBull).toFixed(2);
-    return this.avgBull;
+    return this.avg_bull;
   },
   avgBear: function() {
-    // if(!this.sentimentSum.avgBear) { return this.LastPrice.toFixed(2); }
-    // return parseFloat(this.sentimentSum.avgBear).toFixed(2);
-    return this.avgBear;
+    return this.avg_bear;
   }
 };
 
 Template.stockStats.helpers(stockHelpers);
 Template.stockSentiment.helpers(stockHelpers);
+
+// TODO: change to rely on IronRouter helper in view rather than session
 Template.stockNav.helpers($.extend(stockHelpers, {
   statsClass: function() {
     if(Session.get('currentView') === 'stats')

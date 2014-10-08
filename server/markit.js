@@ -6,12 +6,13 @@ callback = function (res) {
 
 Meteor.methods({
   getStockData: function(symbol) {
-    return HTTP.get(baseURL, {
+    HTTP.get(baseURL, {
       params: {
         symbol: symbol, // toUpperCase?
         callback: 'callback'
       }
     }, function(err, res) {
+      if(err) console.log("GET Markit error: ", err);
       stock = res.content;
       stock = stock.substring(9, stock.length - 1);
       stock = JSON.parse(stock);
@@ -20,9 +21,8 @@ Meteor.methods({
       stock.num_bull = 60 + Math.floor((Math.random() * 20) + 1);
       stock.num_bear = 100 - stock.num_bull;
       // TODO: what and where to return?
-      Stocks.upsert({Symbol: opt.symbol}, stock, function(res) {
-        return stock;
-      });
+      Stocks.upsert({Symbol: stock.symbol}, stock);
+      return stock;
     });
   }
 });

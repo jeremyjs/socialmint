@@ -2,30 +2,27 @@
 // TODO: implement and test
 Template.stockSentiment.events({
   'click #submit-button': function(e) {
-    // e.preventDefault();
-    // sentiments = this.Sentiments || {};
-    // which = $('#bulls-or-bears option:selected').val();
+    e.preventDefault();
+    var which = $('#bulls-or-bears option:selected').val();
+    var value = $('#sentiment-value').val();
 
-    // if(which === "Bullish") {
-    //   value = $('#sentiment-value').val();
-    //   sentiments[Meteor.userId()] = {
-    //     bull: value,
-    //     bear: null
-    //   };
-    // }
-    // else if(which === "Bearish") {
-    //   value = $('#sentiment-value').val();
-    //   sentiments[Meteor.userId()] = {
-    //     bull: null,
-    //     bear: value
-    //   };
-    // }
+    if(which === "Bearish") {
+      sentiments = {
+        bear: value,
+        bull: null
+      };
+    }
+    else if(which === "Bullish") {
+      sentiments = {
+        bear: null,
+        bull: value
+      };
+    }
 
-    // this.Sentiments = sentiments;
-    // this.sentimentSum = calculateSentiment(sentiments);
-
-    // Stocks.update(this._id, { $set: { Sentiments: this.Sentiments, sentimentSum: this.sentimentSum } });
-    // location.reload();
+    Meteor.call('updatePerception', {
+      symbol: this.Symbol,
+      userId: Meteor.userId()
+    });
   },
   'click #set-button': function(e) {
     Meteor.call('setAlert', {
