@@ -5,7 +5,7 @@
         {{Name}} - {{Symbol}}
         <span class="price">({{LastPrice}})</span>
         <span class="change {{changeClass}}">
-          {{#if changeIsPositive}}+{{/if}}{{change}}/{{changePercent}}%
+          {{#if changeIsPositive}}+{{else}}-{{/if}}{{change}}/{{changePercent}}%
         </span>
       </h1>
     </div>
@@ -13,10 +13,10 @@
       <ul class="nav nav-pills nav-justified">
         <!-- TODO: convert to pathFor -->
         <li class="{{statsClass}}">
-          <a href="/stock/show/{{Symbol}}">Statistics</a>
+          <a href="/stocks/{{Symbol}}/stats">Statistics</a>
         </li>
         <li class="{{sentimentClass}}">
-          <a href="/stock/sentiment/{{Symbol}}">Sentiment</a>
+          <a href="/stocks/{{Symbol}}/sentiment">Sentiment</a>
         </li>
       </ul>
     </div>

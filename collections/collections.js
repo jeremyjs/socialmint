@@ -12,46 +12,47 @@ Sentiments = new Mongo.Collection('sentiments');
  *   }
  * }
  */
-// Should there be a Predictions collection?
+
+Alerts = new Mongo.Collection('alerts');
 
 var notifier = function (id, stock) {
 
-	console.log("stock changed: ", stock);
+  console.log("stock changed: ", stock);
 
-	var price = stock.LastPrice;
-	var alerts = stock.Alerts;
+  var price = stock.LastPrice;
+  var alerts = Alerts;
 
-	for (var key in alerts) {
-		var alert = alerts[key];
-		var low = alerts[low];
-		var high = alerts[high];
+  for (var key in alerts) {
+    var alert = alerts[key];
+    var low = alerts[low];
+    var high = alerts[high];
 
-		var message = stock.Name + " (" + stock.Symbol + ") ";
+    var message = stock.Name + " (" + stock.Symbol + ") ";
 
-		if (price < low) {
-			message += "has just dropped to \$" + price
-							+ ", which is below your alert of \$" + low;
-		}
-		else if (price === low) {
-			message += "has just dropped to \$" + price
-							+ ", which is exactly your alert of \$" + low;
-		}
-		else if (price > high) {
-			message += "has just increased to \$" + price
-							+ ", which is above your alert of \$" + high;
-		}
-		else if (price === high) {
-			message += "has just increased to \$" + price
-							+ ", which is exactly your alert of \$" + high;
-		}
-		else {
-			continue;
-		}
+    if (price < low) {
+      message += "has just dropped to \$" + price
+              + ", which is below your alert of \$" + low;
+    }
+    else if (price === low) {
+      message += "has just dropped to \$" + price
+              + ", which is exactly your alert of \$" + low;
+    }
+    else if (price > high) {
+      message += "has just increased to \$" + price
+              + ", which is above your alert of \$" + high;
+    }
+    else if (price === high) {
+      message += "has just increased to \$" + price
+              + ", which is exactly your alert of \$" + high;
+    }
+    else {
+      continue;
+    }
 
-		Meteor.call('sendText', message);
-	}
+    Meteor.call('sendText', message);
+  }
 }
 
 Stocks.find().observeChanges({
-	changed: notifier
+  changed: notifier
 });
