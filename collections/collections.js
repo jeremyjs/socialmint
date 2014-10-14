@@ -1,19 +1,55 @@
-// TODO: remove Stocks and use sentiments and alerts instead
+
+// TODO: make the initializer depend on this spec
+// TODO: calculate count/avg lazily?
+/*
+stock = {
+  name: string,
+  symbol: string,
+  last_price: number,
+  change: number,
+  change_percent: number,
+  timestamp: string,
+  ms_date: number,
+  market_cap: number,
+  volume: number,
+  change_ytd: number,
+  change_percent_ytd: number,
+  high: number,
+  low: number,
+  open: number,
+  alerts: {
+    high: {
+      count: number,
+      avg: number,
+      USERID: number,
+      ...
+    },
+    low: {
+      count: number,
+      avg: number,
+      USERID: number,
+      ...
+    }
+  },
+  predictions: {
+    high: {
+      count: number,
+      avg: number,
+      USERID: number,
+      ...
+    },
+    low: {
+      count: number,
+      avg: number,
+      USERID: number,
+      ...
+    }
+  }
+}
+*/
+
 Stocks = new Mongo.Collection('stocks');
 
-Sentiments = new Mongo.Collection('sentiments');
-/* perception = {
- *   symbol: string,
- *   predictions: {
- *     userId: {
- *       bear: float,
- *       bull: null
- *     }, ...
- *   }
- * }
- */
-
-Alerts = new Mongo.Collection('alerts');
 
 // var notifier = function (id, stock) {
 

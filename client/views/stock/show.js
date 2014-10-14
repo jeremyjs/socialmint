@@ -2,38 +2,45 @@
 // TODO: convert to a controller
 stockHelpers = {
   change: function () {
-    return this.Change.toFixed(2);
+    return this.change.toFixed(2);
   },
   changeClass: function () {
-    return this.Change > 0 ? "positive" : "negative";
+    return this.change > 0 ? "positive" : "negative";
   },
   changeIsPositive: function () {
-    return this.Change > 0;
+    return this.change > 0;
   },
   changePercent: function () {
-    return this.ChangePercent.toFixed(2);
+    return this.change_percent.toFixed(2);
   },
   marketCap: function () {
-    return this.MarketCap.toPrecision(3);
+    return this.market_cap.toPrecision(3);
   },
   volume: function () {
-    return this.Volume.toPrecision(3);
+    return this.volume.toPrecision(3);
   },
   changePercentYTD: function () {
-    return this.ChangePercentYTD.toFixed(2);
+    return this.change_percent_ytd.toFixed(2);
   },
+  // TODO: calculate count/avg lazily?
   avgBull: function() {
-    return this.avg_bull;
+    return this.predictions.high.avg;
   },
   avgBear: function() {
-    return this.avg_bear;
+    return this.predictions.low.avg;
+  },
+  numBull: function() {
+    return this.predictions.high.count;
+  },
+  numBear: function() {
+    return this.predictions.low.count;
   }
 };
 
 Template.stockStats.helpers(stockHelpers);
 Template.stockSentiment.helpers(stockHelpers);
 
-// TODO: change to rely on IronRouter helper in view rather than session
+// TODO: rely on IronRouter helper rather than session
 Template.stockNav.helpers($.extend(stockHelpers, {
   statsClass: function() {
     if(Session.get('currentView') === 'stats')
