@@ -2,6 +2,7 @@
 // TODO: convert to a controller
 stockHelpers = {
   change: function () {
+    console.log(this);
     return this.change.toFixed(2);
   },
   changeClass: function () {

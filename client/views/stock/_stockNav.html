@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-lg-8">
       <h1 class="page-header">
-        {{Name}} - {{Symbol}}
-        <span class="price">({{LastPrice}})</span>
+        {{name}} - {{symbol}}
+        <span class="price">({{last_price}})</span>
         <span class="change {{changeClass}}">
           {{#if changeIsPositive}}+{{else}}-{{/if}}{{change}}/{{changePercent}}%
         </span>
@@ -13,10 +13,10 @@
       <ul class="nav nav-pills nav-justified">
         <!-- TODO: convert to pathFor -->
         <li class="{{statsClass}}">
-          <a href="/stocks/{{Symbol}}/stats">Statistics</a>
+          <a href="/stocks/{{symbol}}/stats">Statistics</a>
         </li>
         <li class="{{sentimentClass}}">
-          <a href="/stocks/{{Symbol}}/sentiment">Sentiment</a>
+          <a href="/stocks/{{symbol}}/sentiment">Sentiment</a>
         </li>
       </ul>
     </div>
