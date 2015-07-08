@@ -8,6 +8,10 @@
   padding-bottom: 0;
 }
 
+.about-container .header-section {
+  margin-top: 40px;
+}
+
 .about-container .section-heading {
   margin-bottom: 0;
 }
