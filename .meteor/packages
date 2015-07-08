@@ -6,14 +6,11 @@
 meteor-platform
 autopublish
 insecure
-mrt:bootstrap-3
 less
-mrt:font-awesome-4-less
 iron:router@1.0.0-pre3
 accounts-base
 accounts-password
 accounts-facebook
-mrt:accounts-ui-bootstrap-3
 mrt:twilio
 http
 meteorhacks:npm
@@ -21,3 +18,5 @@ meteorhacks:npm
 
 npm-container
 chhib:morris
+ian:accounts-ui-bootstrap-3
+twbs:bootstrap
