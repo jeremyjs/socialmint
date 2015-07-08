@@ -1,0 +1,13 @@
+
+.about-container .intro-header {
+  height: 400px;
+}
+
+.about-container .intro-header .intro-message {
+  padding-top: 90px;
+  padding-bottom: 0;
+}
+
+.about-container .section-heading {
+  margin-bottom: 0;
+}
