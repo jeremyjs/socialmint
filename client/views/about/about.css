@@ -15,3 +15,7 @@
 .about-container .section-heading {
   margin-bottom: 0;
 }
+
+.about-container .img-responsive {
+  max-width: 360px;
+}
