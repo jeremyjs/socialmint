@@ -4,7 +4,7 @@ callback = function (res) {
   return res;
 };
 Meteor.methods({
-  createNewStockFromStockData: function(symbol) {
+  getStockData: function(symbol) {
     return HTTP.get(baseURL, {
       params: {
         symbol: symbol,
