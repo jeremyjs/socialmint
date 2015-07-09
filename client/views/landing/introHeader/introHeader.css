@@ -1,0 +1,9 @@
+
+.intro-header-sm {
+  height: 400px;
+}
+
+.intro-header-sm .intro-message {
+  padding-top: 90px;
+  padding-bottom: 0;
+}
