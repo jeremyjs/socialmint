@@ -15,10 +15,12 @@ Meteor.methods({
       }
       var data = res.content;
       if(data.substring(21, 38) === "No symbol matches") {
-        Stocks.upsert({ Symbol: symbol }, { Symbol: symbol, invalid: true });
+        var stock = { Symbol: symbol, invalid: true };
+        Stocks.upsert({ Symbol: symbol }, stock);
+        return stock;
       }
-      console.log('data: ', data);
-      stock = JSON.parse(stock);
+      data = data.substring(9, data.length-1);
+      stock = JSON.parse(data);
       stock.Sentiments = {};
       stock.Alerts = {};
       stock.sentimentSum = {};
