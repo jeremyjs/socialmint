@@ -1,5 +1,8 @@
 
 stockHelpers = {
+  invalid: function () {
+    return this.invalid;
+  },
   change: function () {
     return this.Change.toFixed(2);
   },
@@ -91,11 +94,8 @@ Template.stockSentiment.events({
 });
 
 Template.stockSentiment.rendered = function () {
-  console.log(this);
   var num_bull = this.data.numBull;
   var num_bear = this.data.numBear;
-  console.log(num_bull);
-  console.log(num_bear);
   bull = 70 + Math.floor((Math.random() * 20) + 1);
   bear = 100 - bull;
   Morris.Donut({
