@@ -47,8 +47,9 @@ h6 {
 
 .intro-message {
     position: relative;
-    padding-top: 20%;
+    padding-top: 15%;
     padding-bottom: 20%;
+    max-height: 80vh;
 }
 
 .intro-message > h1 {
