@@ -1,4 +1,10 @@
 
+.navbar .brand-image {
+  float:left;
+  margin-top:10px;
+  padding-left:10px;
+}
+
 .navbar-top-links li a {
   display: block;
 }
