@@ -13,9 +13,6 @@ Perceptions = new Mongo.Collection('Perceptions');
  */
 
 var notifier = function (id, stock) {
-
-	console.log(stock);
-
 	var alerts = stock.Alerts;
 	for (var key in alerts) {
 		var alert = alerts[key];
@@ -42,7 +39,6 @@ var notifier = function (id, stock) {
 }
 
 Stocks.find().observeChanges({
-
 	changed: notifier
 });
 
