@@ -1,8 +1,6 @@
 
 baseURL = "http://dev.markitondemand.com/Api/v2/Quote/jsonp";
-callback = function (res) {
-  return res;
-};
+
 Meteor.methods({
   getStockData: function(symbol) {
     return HTTP.get(baseURL, {
@@ -11,8 +9,15 @@ Meteor.methods({
         callback: 'callback'
       }
     }, function(err, res) {
-      stock = res.content;
-      stock = stock.substring(9, stock.length - 1);
+      if(err) {
+        console.log('HTTP Error:', err);
+        return;
+      }
+      var data = res.content;
+      if(data.substring(21, 38) === "No symbol matches") {
+        Stocks.upsert({ Symbol: symbol }, { Symbol: symbol, invalid: true });
+      }
+      console.log('data: ', data);
       stock = JSON.parse(stock);
       stock.Sentiments = {};
       stock.Alerts = {};
