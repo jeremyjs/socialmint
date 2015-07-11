@@ -14,7 +14,6 @@ Meteor.methods({
       stock = res.content;
       stock = stock.substring(9, stock.length - 1);
       stock = JSON.parse(stock);
-      console.log(stock);
       stock.Sentiments = {};
       stock.Alerts = {};
       stock.sentimentSum = {};
@@ -22,7 +21,7 @@ Meteor.methods({
       stock.avgBear = (stock.LastPrice - stock.LastPrice * ((Math.random() * .2) + .05)).toFixed(2);
       stock.numBull = 70 + Math.floor((Math.random() * 20) + 1);
       stock.numBear = 100 - stock.numBull;
-      Stocks.insert(stock);
+      Stocks.upsert({ Symbol: stock.Symbol }, stock);
       return stock;
     });
   },
